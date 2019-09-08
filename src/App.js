@@ -3,6 +3,7 @@ import LoginForm from './components/LoginForm';
 import Blog from './components/Blog';
 import BlogForm from './components/BlogForm';
 import Notification from './components/Notification';
+import Togglable from './components/Togglable';
 import loginService from './services/login';
 import blogService from './services/blogs';
 
@@ -18,6 +19,8 @@ const App = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [url, setUrl] = useState('');
+
+  const blogref = React.createRef();
 
   useEffect(() => {
     blogService.getAll().then(initialBlogs => {
@@ -66,6 +69,7 @@ const App = () => {
 
   const addBlog = (e) => {
     e.preventDefault();
+    blogref.current.toggleVisibility();
     const newBlog = {
       title: title,
       author: author,
@@ -106,12 +110,15 @@ const App = () => {
     window.localStorage.removeItem('LoggedInUser');
     setUser(null);
   }
-
+  
   if (user == null) {
     return (
       <div className="App">
+        <div>
+        <Notification message={notification} />
+
+        </div>
         <header className="App-header">
-          <Notification message={notification} />
           <LoginForm login={login} handleChange={handleLoginFieldChange} />
 
         </header>
@@ -120,9 +127,15 @@ const App = () => {
   } else {
     return (
       <div className="app">
+        <div>
+        <Notification message={notification} />
+
+        </div>
         <h2>{user.name} logged in</h2>
         <button onClick={logout}>Logout</button>
-        <BlogForm handleChange={handleBlogChange} onSubmit={addBlog} title={title} url={url} author={author} />
+        <Togglable buttonLabel="Show form" ref={blogref}>
+          <BlogForm handleChange={handleBlogChange} onSubmit={addBlog} title={title} url={url} author={author} />
+        </Togglable>
         {blogs.map(blog =>
           <Blog key={blog.id} blog={blog} />
         )}

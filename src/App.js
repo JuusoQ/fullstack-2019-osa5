@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import LoginForm from './components/LoginForm';
 import Blog from './components/Blog';
 import BlogForm from './components/BlogForm';
+import Notification from './components/Notification';
 import loginService from './services/login';
 import blogService from './services/blogs';
 
@@ -10,6 +11,7 @@ const App = () => {
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
   const [blogs, setBlogs] = useState([]);
+  const [notification, setNotification] = useState(null);
 
   // form specific information 
 
@@ -86,9 +88,16 @@ const App = () => {
       setPassword('');
       setUser(user);
       window.localStorage.setItem('LoggedInUser', JSON.stringify(user));
-
+      setNotification("Jes, onnistui");
+      setTimeout(() => {
+        setNotification("")
+      },5000);
     } catch (error) {
       console.log("Error with the login ", error);
+      setNotification("Virhe");
+      setTimeout(() => {
+        setNotification("")
+      },5000);
       setUser(null);
     }
   };
@@ -102,7 +111,7 @@ const App = () => {
     return (
       <div className="App">
         <header className="App-header">
-
+          <Notification message={notification} />
           <LoginForm login={login} handleChange={handleLoginFieldChange} />
 
         </header>

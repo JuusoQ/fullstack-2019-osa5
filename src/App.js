@@ -81,6 +81,28 @@ const App = () => {
     })
   }
 
+  const likeBlog = (id) => {
+    console.log("ID from likeblog ", id)
+    const blog = blogs.find(b => b.id === id)
+    console.log(blog)
+    const likes = blog.likes + 1;
+    const newBlog = {
+      ...blog,
+      likes: likes
+    }
+    console.log("Updating (PUT) with ", newBlog)
+    blogService.like(newBlog).then(response => {
+      setBlogs(blogs.map(blog => blog.id !== id ? blog : response))
+    })
+  }
+
+  const deleteBlog = (id) => {
+    blogService.remove(id).then(response => {
+      console.log("deleted ", id)
+    })
+  }
+
+
   const login = async e => {
     e.preventDefault();
     try {
@@ -137,7 +159,7 @@ const App = () => {
           <BlogForm handleChange={handleBlogChange} onSubmit={addBlog} title={title} url={url} author={author} />
         </Togglable>
         {blogs.map(blog =>
-          <Blog key={blog.id} blog={blog} />
+          <Blog key={blog.id} blog={blog} like={likeBlog} del={deleteBlog}/>
         )}
 
       </div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-const Blog = ({ blog,like, del }) => {
+
+const Blog = ({ blog, like, del }) => {
 
   const [visible, setVisible] = useState(false);
 
@@ -11,23 +12,24 @@ const Blog = ({ blog,like, del }) => {
 
   const blogStyle = {
     border: 1,
-    paddingLeft:10,
-    paddingTop:5,
+    paddingLeft: 10,
+    paddingTop: 5,
     borderWidth: 1,
     marginBottom: 1
   }
-
+  console.log("Blogin kentät")
+  console.log(blog)
   return (
 
     <div style={blogStyle}>
       <div onClick={() => toggleVisible()} >{blog.title}</div>
 
       <div style={showDetails}>
-        {blog.title} <br/>Author: {blog.author} <br/> Url: {blog.url}
-        <br/>
+        {blog.title} <br />Author: {blog.author} <br /> Url: {blog.url}
+        <br />
 
         <button onClick={() => like(blog.id)}> {blog.likes} Like</button>
-        <button onClick={() => del(blog.id) }>Delete blog</button>
+        <button onClick={() => del(blog.id)}>Delete blog</button>
       </div>
     </div>
   )

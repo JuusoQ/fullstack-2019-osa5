@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types'
+import Togglable from './Togglable';
 
 const LoginForm = (props) => (
     <div>
@@ -9,5 +11,10 @@ const LoginForm = (props) => (
         </form>
     </div>
 )
+
+Togglable.PropTypes = {
+    login: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired
+}
 
 export default LoginForm;

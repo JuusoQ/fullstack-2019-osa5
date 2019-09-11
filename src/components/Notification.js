@@ -1,18 +1,18 @@
-import React from 'react';
+import React from 'react'
 import PropTypes from 'prop-types'
 
-const Notification = ({message}) => {
-    if(message == null) {
-        return null;
-    } else {
-        return (
-            <div>{message}</div>
-        )
-    }
+const Notification = ({ message }) => {
+  if(message === null) {
+    return null
+  } else {
+    return (
+      <div>{message}</div>
+    )
+  }
 }
 
 Notification.PropTypes = {
-    message: PropTypes.string
+  message: PropTypes.string
 }
 
-export default Notification;
+export default Notification

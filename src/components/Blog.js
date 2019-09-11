@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 
 const Blog = ({ blog, like, del }) => {
 
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false)
 
   const toggleVisible = () => {
-    setVisible(!visible);
+    setVisible(!visible)
   }
 
   const showDetails = { display: visible ? '' : 'none' }
@@ -17,7 +17,7 @@ const Blog = ({ blog, like, del }) => {
     borderWidth: 1,
     marginBottom: 1
   }
-  console.log("Blogin kentät")
+  console.log('Blogin kentät')
   console.log(blog)
   return (
 

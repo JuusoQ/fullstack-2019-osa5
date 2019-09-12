@@ -19,6 +19,11 @@ const App = () => {
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
   const [url, setUrl] = useState('')
+  
+  // const title = useField('title')
+  // const author = useField('author')
+  // const url = useField('url')
+
 
   const blogref = React.createRef()
 

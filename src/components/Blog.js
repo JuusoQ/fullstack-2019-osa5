@@ -17,8 +17,6 @@ const Blog = ({ blog, like, del }) => {
     borderWidth: 1,
     marginBottom: 1
   }
-  console.log('Blogin kentät')
-  console.log(blog)
   return (
 
     <div style={blogStyle}>

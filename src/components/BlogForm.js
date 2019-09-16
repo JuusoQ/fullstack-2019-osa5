@@ -1,21 +1,18 @@
 import React from 'react'
-import {useField} from '../hooks'
 
-const BlogForm = ({ onSubmit}) => {
-  const title = useField('title')
-  const author = useField('author')
-  const url = useField('url')
+const BlogForm = ({ onSubmit,title,author,url }) => {
+
   return(
-  <div>
-    <h2>Create new</h2>
-    <form onSubmit={onSubmit}>
-        title <input {...title}/>
-        author <input {...author} />
-        url <input {...url} />
-      <button type="submit">create</button>
-    </form>
-  </div>
-)}
+    <div>
+      <h2>Create new</h2>
+      <form onSubmit={onSubmit}>
+        title <input name="title" {...title} />
+        author <input name="author" {...author} />
+        url <input name="url" {...url} />
+        <button type="submit">create</button>
+      </form>
+    </div>
+  )}
 
 
 export default BlogForm

@@ -2,19 +2,22 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Togglable from './Togglable'
 
-const LoginForm = (props) => (
-  <div>
-    <form onSubmit={props.login}>
-      <input type="text" name="username" onChange={props.handleChange}/>
-      <input type="password" name="password" onChange={props.handleChange} />
-      <button type="submit">Kirjaudu</button>
-    </form>
-  </div>
-)
+const LoginForm = ({ login, username, password }) => {
+//   const username = useField('text')
+//   const password = useField('password')
+  return(
+    <div>
+      <form onSubmit={login}>
+        <input {...username}/>
+        <input {...password} />
+        <button type="submit">Kirjaudu</button>
+      </form>
+    </div>
+  )}
 
-Togglable.PropTypes = {
+Togglable.propTypes = {
   login: PropTypes.func.isRequired,
-  handleChange: PropTypes.func.isRequired
+  handleChange: PropTypes.func
 }
 
 export default LoginForm

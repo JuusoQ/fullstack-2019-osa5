@@ -11,7 +11,7 @@ const Notification = ({ message }) => {
   }
 }
 
-Notification.PropTypes = {
+Notification.propTypes = {
   message: PropTypes.string
 }
 
